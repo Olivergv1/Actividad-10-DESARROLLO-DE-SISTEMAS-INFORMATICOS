@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Tarea{% endblock %}
+
+{% block content %}
+<h2>Agregar Tarea</h2>
+<form method="POST" action="/tareas/agregar">
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título de la tarea" required>
+    </div>
+    <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción detallada de la tarea" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="fecha_hora" class="form-label">Fecha y Hora</label>
+        <input type="datetime-local" class="form-control" id="fecha_hora" name="fecha_hora" required>
+    </div>
+    <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        <select class="form-control" id="estado" name="estado" required>
+            <option value="pendiente">Pendiente</option>
+            <option value="completado">Completado</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Tarea</button>
+    <a href="/tareas" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
+

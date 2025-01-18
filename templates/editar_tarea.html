@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Tarea{% endblock %}
+
+{% block content %}
+<h2>Editar Tarea</h2>
+<form method="POST" action="/tareas/editar/{{ tarea[0] }}">
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" value="{{ tarea[1] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required>{{ tarea[2] }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="fecha_hora" class="form-label">Fecha y Hora</label>
+        <input type="datetime-local" class="form-control" id="fecha_hora" name="fecha_hora" value="{{ tarea[3] }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        <select class="form-control" id="estado" name="estado" required>
+            <option value="pendiente" {% if tarea[4] == 'pendiente' %}selected{% endif %}>Pendiente</option>
+            <option value="completado" {% if tarea[4] == 'completado' %}selected{% endif %}>Completado</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a href="/tareas" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
+
