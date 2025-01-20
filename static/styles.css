@@ -10,16 +10,15 @@ body.tareas-page {
     color: #333; /* Cambia el color del texto si es necesario */
 }
 
-/* Fondo personalizado para la página de agregar tareas */
 body.agregar-tarea-page {
-    background-color: #1c1d1d; /* Cambia este color por el que prefieras */
-    color: #ffffff; /* Cambia el color del texto si es necesario */
+    background-color: #1c1d1d; 
+    color: #ffffff; 
 }
 
 /* Fondo personalizado para la página de editar tareas */
 body.editar-tareas-page {
-    background-color: #1c1d1d; /* Cambia este color por el que prefieras */
-    color: #fff6f6; /* Ajusta el color del texto según contraste */
+    background-color: #1c1d1d; 
+    color: #fff6f6; 
 }
 
 

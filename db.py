@@ -2,22 +2,19 @@ import os
 import psycopg2
 from psycopg2 import OperationalError
 
-
-def get_db_connection():
-    # Asegurarse de que la base de datos existe antes de conectarse
-    # Conectar a la base de datos existente
+def get_db_connection2():
     conn = psycopg2.connect(
         host="localhost",
-        port="5432",
-        database="postgres",
+        port="5433",
+        database="Actividad8",
         user="postgres",
         password="oliver"
     )
     return conn
 
-# Obtener la URL de la base de datos de las variables de entorno
+# URL de la base de datos de las variables de entorno
 DATABASE_URL = os.getenv('DATABASE_URL')
-def get_db_connection2():
+def get_db_connection():
     try:
         # Conexión usando la URL de la base de datos
         conn = psycopg2.connect(DATABASE_URL)

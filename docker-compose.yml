@@ -1,24 +1,26 @@
-
+version: '3.8'
 services:
-  web:
-    build:
+  app:
+    build: 
       context: .
+      dockerfile: Dockerfile
+    image:
+      app-python-flask
     ports:
       - "5000:5000"
-    volumes:
-      - .:/APP_2
     environment:
-      - FLASK_ENV=development
-      - DATABASE_URL=postgresql://postgres:password@db:5432/postgres
+      - DATABASE_URL=postgresql://postgres:oliver@db:5433/Actividad8
+    volumes:
+      - .:/app
     depends_on:
       - db
 
   db:
-    image: postgres:14
+    image: postgres:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: oliver
-      POSTGRES_DB: postgres
+      POSTGRES_DB: Actividad8
     ports:
       - "5432:5432"
     volumes:

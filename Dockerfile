@@ -1,30 +1,27 @@
-# Usar una imagen base de Python
-FROM python:3.11-slim
+# Utiliza una imagen base oficial de Python
+FROM python:3.9-slim
 
-# Instalar dependencias del sistema necesarias para las librerías de Python
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    gcc \
-    libpq-dev \
-    libxml2-dev \
-    zlib1g-dev \
-    libjpeg-dev \
+
+# Instalar las dependencias necesarias para psycopg2 y compilar extensiones
+RUN apt-get update \
+    && apt-get install -y libpq-dev gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Establecer el directorio de trabajo dentro del contenedor
-WORKDIR /APP_2
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-# Copiar el archivo de requerimientos
-COPY requirements.txt /APP_2//
+# Copia el archivo requirements.txt para instalar dependencias
+COPY requirements.txt .
 
-# Instalar las dependencias necesarias
-RUN pip install --no-cache-dir -r requirements.txt
+# Instala las dependencias necesarias
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-# Copiar el código del proyecto al contenedor
-COPY . /APP_2/
+# Copia el resto de los archivos de la aplicación al contenedor
+COPY . .
 
-# Exponer el puerto donde se ejecutará la aplicación
+# Expone el puerto en el que Flask correrá
 EXPOSE 5000
 
-# Comando para ejecutar la aplicación Flask
-CMD ["python", "aplicacion.py"]
+# Define el comando para ejecutar la aplicación Flask
+CMD ["python", "app.py"]

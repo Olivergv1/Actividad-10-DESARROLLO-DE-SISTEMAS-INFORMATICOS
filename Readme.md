@@ -9,3 +9,5 @@ python -m pip freeze > requirements.txt
 pip install -r requirements.txt
 python -r pip install requirements.txt
 
+#o instalas individual
+pip install flask psycopg2 flask-cors bcrypt fpdf pandas
